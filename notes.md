@@ -10,9 +10,7 @@ append to NAME.md
 
 git commit --date="2005-04-07T22:13:13" -m="Message"
 
-
 git commit
-
 
 GIT_AUTHOR_DATE: who wrote the work
 
