@@ -7,12 +7,5 @@ collect private/forked repos and their commit histories (token)
 use private commit timestamps w/ generic commit message
 append to NAME.md
 
-
-git commit --date="2005-04-07T22:13:13" -m="Message"
-
-git commit
-
-GIT_AUTHOR_DATE: who wrote the work
-
-GIT_COMMITTER_DATE: who applied the work (accepted pull request)
-gpom
+GIT_COMMITTER_DATE="Sat Jan 9 22:13:13 2016 -0700" GIT_AUTHOR_DATE="Sat Jan 9 22:13:13
+ 2016 -0700" git commit -m "jan 9 2016"
