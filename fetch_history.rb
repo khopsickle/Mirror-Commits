@@ -1,8 +1,12 @@
-module FetchHistory
+class FetchHistory
 
-  def self.get_private_repos(github)
+  def initialize(github)
+    @github = github
+  end
+
+  def get_private_repos
     results = []
-    github.repos.list do |repo|
+    @github.repos.list do |repo|
       if repo['private'] == true || repo['fork'] == true
         record = {
           repo_name: repo['name'],
@@ -15,15 +19,15 @@ module FetchHistory
     results
   end
 
-  def self.populate_repo_commits(results, github)
+  def populate_repo_commits(results)
     results.each do |record|
-      record[:commits] = get_repo_commits(record, github)
+      record[:commits] = get_repo_commits(record)
     end
   end
 
-  def self.get_repo_commits(record, github)
+  def get_repo_commits(record)
     commits = {}
-    github.repos.commits.list('DawnPaladin', record[:repo_name]) do |commit|
+    @github.repos.commits.list('DawnPaladin', record[:repo_name]) do |commit|
       # pp commit
       commit_date = commit['commit']['author']['date']
       commit_msg = commit['commit']['message']

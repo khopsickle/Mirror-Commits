@@ -12,5 +12,7 @@ Figaro.load
 key = ENV['github_key']
 github = Github.new(oauth_token: key)
 
-results = FetchHistory.get_private_repos(github)
-pp FetchHistory.populate_repo_commits(results, github)
+fetcher = FetchHistory.new(github)
+
+results = fetcher.get_private_repos
+pp fetcher.populate_repo_commits(results)
